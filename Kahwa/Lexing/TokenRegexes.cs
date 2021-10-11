@@ -1,0 +1,81 @@
+﻿namespace Kahwa.Lexing
+{
+    static internal class TokenRegexes
+    {
+        public static (string, TokenType)[] IdenRegexTable = new (string, TokenType)[]
+        {
+            (@"^(true|false)",                        TokenType.BOOLEAN_LIT),
+            (@"^fun(?![a-zA-Z_0-9])",                 TokenType.FUN),
+            (@"^for(?![a-zA-Z_0-9])",                 TokenType.FOR),
+            (@"^return(?![a-zA-Z_0-9])",              TokenType.RETURN),
+            (@"^if(?![a-zA-Z_0-9])",                  TokenType.IF),
+            (@"^else(?![a-zA-Z_0-9])",                TokenType.ELSE),
+            (@"^elif(?![a-zA-Z_0-9])",                TokenType.ELIF),
+            (@"^while(?![a-zA-Z_0-9])",               TokenType.WHILE),
+            (@"^break(?![a-zA-Z_0-9])",               TokenType.BREAK),
+            (@"^continue(?![a-zA-Z_0-9])",            TokenType.CONTINUE),
+            (@"^in(?![a-zA-Z_0-9])",                  TokenType.IN),
+            
+            (@"^List(?![a-zA-Z_0-9])",                TokenType.LIST_TYPE),
+            (@"^Fun(?![a-zA-Z_0-9])",                 TokenType.FUN_TYPE),
+            (@"^Long(?![a-zA-Z_0-9])",                TokenType.LONG_TYPE),
+            (@"^Int(?![a-zA-Z_0-9])",                 TokenType.INT_TYPE),
+            (@"^Short(?![a-zA-Z_0-9])",               TokenType.SHORT_TYPE),
+            (@"^Byte(?![a-zA-Z_0-9])",                TokenType.BYTE_TYPE),
+            (@"^Double(?![a-zA-Z_0-9])",              TokenType.DOUBLE_TYPE),
+            (@"^Float(?![a-zA-Z_0-9])",               TokenType.FLOAT_TYPE),
+            (@"^String(?![a-zA-Z_0-9])",              TokenType.STRING_TYPE),
+            (@"^Char(?![a-zA-Z_0-9])",                TokenType.CHAR_TYPE),
+            (@"^Bool(?![a-zA-Z_0-9])",                TokenType.BOOL_TYPE),
+            (@"^Null(?![a-zA-Z_0-9])",                TokenType.NULL),
+            
+            (@"^(?![0-9])[0-9_a-zA-Z\u00C0-\u017F]+", TokenType.IDENTIFIER),
+        };
+
+        public static (string, TokenType)[] OtherRegexTable = new (string, TokenType)[]
+        {
+            (@"^\t",                                  TokenType.TAB),
+            (@"^\n",                                  TokenType.EOL),
+            (@"^\s",                                  TokenType.SPACE),
+            (@"^\(",                                  TokenType.L_PAREN),
+            (@"^\)",                                  TokenType.R_PAREN),
+            (@"^\,",                                  TokenType.COMMA),
+            (@"^\.",                                  TokenType.DOT),
+            (@"^[0-9]+",                              TokenType.INTEGER_LIT),
+            (@"^\""[^\""\\]*(\\.[^\""\\]*)*\""",      TokenType.STRING_LIT),
+            (@"^\'[^\'\\]*(\\.[^\'\\]*)*\'",          TokenType.CHAR_LIT),
+            (@"^[0-9]+\.[0-9]+",                      TokenType.DOUBLE_LIT),
+            (@"^\[",                                  TokenType.L_BRACKET),
+            (@"^\]",                                  TokenType.R_BRACKET),
+            (@"^\{",                                  TokenType.L_CURLY_BRACKET),
+            (@"^\}",                                  TokenType.R_CURLY_BRACKET),
+            (@"^\/\/(.*)",                            TokenType.SINGLE_LINE_COMMENT),
+            (@"^\/\*((((?!\/\*)(?!\*\/).)|\n)*)\*\/", TokenType.MULTI_LINE_COMMENT),
+            (@"^\%",                                  TokenType.MODULO),
+            (@"^\^",                                  TokenType.POWER),
+            (@"^\+\=",                                TokenType.PLUS_EQ),
+            (@"^\-\=",                                TokenType.MINUS_EQ),
+            (@"^\/\=",                                TokenType.DIVIDE_EQ),
+            (@"^\*\=",                                TokenType.MULTIPLY_EQ),
+            (@"^\^\=",                                TokenType.POWER_EQ),
+            (@"^\%\=",                                TokenType.MODULO_EQ),
+            (@"^\+",                                  TokenType.PLUS),
+            (@"^\-",                                  TokenType.MINUS),
+            (@"^\|\|",                                TokenType.BOOLEAN_OR),
+            (@"^\&\&",                                TokenType.BOOLEAN_AND),
+            (@"^\>\=",                                TokenType.GREATER_EQ),
+            (@"^\<\=",                                TokenType.LESS_EQ),
+            (@"^\=\=",                                TokenType.EQ),
+            (@"^\!\=",                                TokenType.NOT_EQ),
+            (@"^\>",                                  TokenType.GREATER),
+            (@"^\<",                                  TokenType.LESS),
+            (@"^\/",                                  TokenType.DIVIDE),
+            (@"^\*",                                  TokenType.MULTIPLY),
+            (@"^\=",                                  TokenType.ASSIGN),
+            (@"^\!",                                  TokenType.NOT),
+            (@"^\'",                                  TokenType.APOSTROPHE),
+            (@"^\""",                                 TokenType.QUOTE),
+            (@"^.",                                   TokenType.UNKNOWN),
+        };
+    }
+}
