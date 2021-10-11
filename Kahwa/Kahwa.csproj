@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Parsing\Types\" />
     <Folder Include="VM\" />
-    <Folder Include="Parsing\" />
   </ItemGroup>
 
 </Project>

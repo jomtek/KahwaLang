@@ -19,6 +19,9 @@ namespace Kahwa
 
             Console.WriteLine($"OK\t{tokens.Length} tokens total");
 
+            if (tokens.Length == 0)
+                return;
+
             Console.Write("Parsing...");
 
 

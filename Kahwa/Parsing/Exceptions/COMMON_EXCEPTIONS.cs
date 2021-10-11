@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kahwa.Parsing
+namespace Kahwa.Parsing.Exceptions
 {
     // Below is a list of all the possible parser exceptions
     // Most code below has been copied from another repository of mine https://github.com/Jomtek/LazenLang

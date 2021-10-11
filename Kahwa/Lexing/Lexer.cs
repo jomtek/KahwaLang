@@ -28,7 +28,7 @@ namespace Kahwa.Lexing
                     continue;
                 }
 
-                var table = Char.IsLetter(code[0]) ? TokenRegexes.IdenRegexTable : TokenRegexes.OtherRegexTable;
+                var table = Char.IsLetter(code[0]) ? TokenInformation.IdenRegexTable : TokenInformation.OtherRegexTable;
                 foreach ((string, TokenType) regexPair in table)
                 {
                     TokenType tokenType = regexPair.Item2;
