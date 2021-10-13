@@ -1,13 +1,13 @@
 ﻿using Kahwa.Lexing;
+using Kahwa.Parsing.AST.Statements;
 using Kahwa.Parsing.Exceptions;
-using Kahwa.Parsing.Statements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kahwa.Parsing.Expressions
+namespace Kahwa.Parsing.AST.Expressions
 {
     public class IfInstr : IExpr
     {
@@ -167,7 +167,8 @@ namespace Kahwa.Parsing.Expressions
             if (elifBranches.Count > 0)
             {
                 IfInstr lastElifBranch = elifBranches[^1];
-                elseBranch = new Block(new InstrNode[] {
+                elseBranch = new Block(new InstrNode[]
+                {
                     new InstrNode(new ExprInstr(lastElifBranch), new CodePosition())
                 });
             }

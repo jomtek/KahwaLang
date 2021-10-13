@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kahwa.Parsing.Statements.Functions
+namespace Kahwa.Parsing.AST.Statements.Functions
 {
     public class ReturnInstr : IInstr
     {

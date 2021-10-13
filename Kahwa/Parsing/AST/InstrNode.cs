@@ -1,12 +1,11 @@
 ﻿using Kahwa.Lexing;
+using Kahwa.Parsing.AST.Statements;
+using Kahwa.Parsing.AST.Statements.Functions;
+using Kahwa.Parsing.AST.Statements.Loops;
 using Kahwa.Parsing.Exceptions;
-using Kahwa.Parsing.Expressions;
-using Kahwa.Parsing.Statements;
-using Kahwa.Parsing.Statements.Functions;
-using Kahwa.Parsing.Statements.Loops;
 using System;
 
-namespace Kahwa.Parsing
+namespace Kahwa.Parsing.AST
 {
     public interface IInstr
     { }

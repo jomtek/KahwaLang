@@ -1,15 +1,15 @@
 ﻿using Kahwa.Lexing;
 using Kahwa.Parsing.Algorithms;
+using Kahwa.Parsing.AST.Expressions;
+using Kahwa.Parsing.AST.Expressions.Functions;
 using Kahwa.Parsing.Exceptions;
-using Kahwa.Parsing.Expressions;
-using Kahwa.Parsing.Expressions.Functions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kahwa.Parsing
+namespace Kahwa.Parsing.AST
 {
     public interface IExpr
     { }

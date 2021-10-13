@@ -1,7 +1,8 @@
 ﻿using Kahwa.Lexing;
+using Kahwa.Parsing.AST.Expressions;
 using Kahwa.Parsing.Exceptions;
 
-namespace Kahwa.Parsing.Statements.Loops
+namespace Kahwa.Parsing.AST.Statements.Loops
 {
     public class ForLoop : IInstr
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kahwa.Parsing.Statements
+namespace Kahwa.Parsing.AST.Statements
 {
     public class ExprInstr : IInstr
     {

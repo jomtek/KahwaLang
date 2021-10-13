@@ -1,4 +1,5 @@
 ﻿using Kahwa.Lexing;
+using Kahwa.Parsing.AST.Expressions;
 using Kahwa.Parsing.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kahwa.Parsing.Statements.Loops
+namespace Kahwa.Parsing.AST.Statements.Loops
 {
     public class WhileLoop : IInstr
     {

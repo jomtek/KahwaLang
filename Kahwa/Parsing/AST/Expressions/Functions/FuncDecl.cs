@@ -1,13 +1,12 @@
 ﻿using Kahwa.Lexing;
 using Kahwa.Parsing.Exceptions;
-using Kahwa.Parsing.Statements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kahwa.Parsing.Expressions.Functions
+namespace Kahwa.Parsing.AST.Expressions.Functions
 {
     public class FuncDecl : IExpr
     {
@@ -24,7 +23,7 @@ namespace Kahwa.Parsing.Expressions.Functions
 
         public static FuncDecl Consume(Parser parser)
         {
-            // fun foo(a, b, c:String) {}
+            // fun foo(a, b, c: String) {}
             Name name;
             Name[] parameters;
             Block block;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kahwa.Parsing
+namespace Kahwa.Parsing.AST.Types
 {
     public interface IType
     { }

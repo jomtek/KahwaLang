@@ -7,9 +7,15 @@ namespace Kahwa.Parsing
 {
     public class Parser
     {
-        private Token[] _tokens;
+        private readonly Token[] _tokens;
         private int _lookAheadIndex = 0;
         public CodePosition Cursor { get; private set; }
+
+        private int _tokensEaten = 0;
+        public int TokensEaten
+        {
+            get { return _tokensEaten; }
+        }
 
         public Parser(Token[] tokens)
         {
@@ -26,7 +32,7 @@ namespace Kahwa.Parsing
 
         public bool AreTokensRemaining()
         {
-            return _lookAheadIndex < _tokens.Count();
+            return _lookAheadIndex < _tokens.Length;
         }
 
         public Token TryEat(TokenType tokenType, bool optional = true)
@@ -43,6 +49,8 @@ namespace Kahwa.Parsing
                 Cursor = LookAhead().Pos;
             else
                 Cursor = new CodePosition(LookAhead().Pos.Line + 1, 1);
+
+            _tokensEaten++; // Statistics
 
             _lookAheadIndex++;
             return _tokens[_lookAheadIndex - 1];

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kahwa.Parsing.Expressions.Functions
+namespace Kahwa.Parsing.AST.Expressions.Functions
 {
     public class FuncCall : IExpr
     {

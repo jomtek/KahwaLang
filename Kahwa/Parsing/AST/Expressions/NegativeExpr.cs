@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kahwa.Parsing.Expressions
+namespace Kahwa.Parsing.AST.Expressions
 {
     public class NegativeExpr : IExpr
     {

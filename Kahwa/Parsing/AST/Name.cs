@@ -1,7 +1,8 @@
 ﻿using Kahwa.Lexing;
+using Kahwa.Parsing.AST.Types;
 using Kahwa.Parsing.Exceptions;
 
-namespace Kahwa.Parsing
+namespace Kahwa.Parsing.AST
 {
     // This class represents an identifier.
     // In Kahwa, any identifier, in any situation, can be explicitly type-restricted.

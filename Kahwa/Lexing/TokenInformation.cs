@@ -2,7 +2,7 @@
 {
     public static class TokenInformation
     {
-        public static TokenType[] AlgebraOperators =
+        public static readonly TokenType[] AlgebraOperators =
         {
             TokenType.EQ,
             TokenType.NOT_EQ,
@@ -23,7 +23,7 @@
             TokenType.CAST,
         };
 
-        public static TokenType[] MutationOperators =
+        public static readonly TokenType[] MutationOperators =
         {
             TokenType.ASSIGN,
             TokenType.MINUS_EQ,
@@ -34,7 +34,7 @@
             TokenType.MODULO_EQ,
         };
 
-        public static TokenType[] Literals =
+        public static readonly TokenType[] Literals =
         {
             TokenType.IDENTIFIER,
             TokenType.BOOLEAN_LIT,
@@ -44,7 +44,7 @@
             TokenType.STRING_LIT,
         };
 
-        public static TokenType[] PrimitiveTypes =
+        public static readonly TokenType[] PrimitiveTypes =
         {
             TokenType.LIST_TYPE,
             TokenType.FUN_TYPE,
@@ -59,7 +59,7 @@
             TokenType.BOOL_TYPE,
         };
 
-        public static (string, TokenType)[] IdenRegexTable = new (string, TokenType)[]
+        public static readonly (string, TokenType)[] IdenRegexTable = new (string, TokenType)[]
         {
             (@"^(true|false)",                        TokenType.BOOLEAN_LIT),
             (@"^fun(?![a-zA-Z_0-9])",                 TokenType.FUN),
@@ -90,7 +90,7 @@
             (@"^(?![0-9])[0-9_a-zA-Z\u00C0-\u017F]+", TokenType.IDENTIFIER),
         };
 
-        public static (string, TokenType)[] OtherRegexTable = new (string, TokenType)[]
+        public static readonly (string, TokenType)[] OtherRegexTable = new (string, TokenType)[]
         {
             (@"^\t",                                  TokenType.TAB),
             (@"^\n",                                  TokenType.EOL),
