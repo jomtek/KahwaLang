@@ -1,4 +1,5 @@
 ﻿using Kahwa.Lexing;
+using Kahwa.Parsing.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,13 +24,20 @@ namespace Kahwa.Parsing.AST.Expressions.Functions
             Name name;
             ExprNode[] arguments;
 
+            var oldCursor = parser.Cursor;
+
             name = parser.TryConsumer(Name.Consume); // foo
-
             parser.TryEat(TokenType.L_PAREN); // (
-
             arguments = Utils.ParseSequence(parser, ExprNode.Consume); // baz, baz, baz
-
             parser.TryEat(TokenType.R_PAREN, false); // )
+
+            if (name.Type != null)
+            {
+                throw new ParserException(
+                    new UnexpectedElementException("Unexpected explicit type restriction"),
+                    oldCursor
+                );
+            }
 
             return new FuncCall(name, arguments);
         }

@@ -70,7 +70,7 @@ namespace Kahwa.Parsing.AST.Expressions
                 ExprNode condition;
                 Block branch;
 
-                parser.SkipThroughEOLs();
+                parser.SkipThroughNewlines();
 
                 try
                 {
@@ -114,7 +114,7 @@ namespace Kahwa.Parsing.AST.Expressions
             #endregion
 
             #region Collect ELSE Branch
-            parser.SkipThroughEOLs();
+            parser.SkipThroughNewlines();
 
             bool isThereElse = true;
             try

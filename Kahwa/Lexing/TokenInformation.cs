@@ -133,6 +133,8 @@
             (@"^\!",                                  TokenType.NOT),
             (@"^\'",                                  TokenType.APOSTROPHE),
             (@"^\""",                                 TokenType.QUOTE),
+            (@"^\:",                                  TokenType.COLON),
+            (@"^\;",                                  TokenType.SEMICOLON),
             (@"^.",                                   TokenType.UNKNOWN),
         };
     }

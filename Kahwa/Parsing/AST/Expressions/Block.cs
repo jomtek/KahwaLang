@@ -19,7 +19,7 @@ namespace Kahwa.Parsing.AST.Expressions
 
         public static Block Consume(Parser parser, bool curlyBrackets = true)
         {
-            parser.SkipThroughEOLs();
+            parser.SkipThroughNewlines();
 
             if (curlyBrackets)
                 parser.TryEat(TokenType.L_CURLY_BRACKET);
@@ -45,7 +45,7 @@ namespace Kahwa.Parsing.AST.Expressions
 
                 try
                 {
-                    parser.TryEat(TokenType.EOL);
+                    parser.TryManyEats(new TokenType[] { TokenType.EOL, TokenType.SEMICOLON });
                 }
                 catch (ParserException)
                 {
@@ -81,9 +81,7 @@ namespace Kahwa.Parsing.AST.Expressions
                     }
                     catch (ParserException ex)
                     {
-                        if (!ex.IsExceptionFictive())
-                            throw;
-                        
+                        if (!ex.IsExceptionFictive()) throw;
                         if (parser.LookAhead().Type != TokenType.R_CURLY_BRACKET)
                         {
                             throw new ParserException(
@@ -91,8 +89,6 @@ namespace Kahwa.Parsing.AST.Expressions
                                 parser.Cursor
                             );
                         }
-
-                        break;
                     }
 
                     statements.Add(statement);

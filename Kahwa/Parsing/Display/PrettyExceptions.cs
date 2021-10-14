@@ -22,6 +22,8 @@ namespace Kahwa.Parsing.Display
                     return x.TokenType.ToString();
                 case ExpectedTokenException x:
                     return x.TokenType.ToString();
+                case UnexpectedElementException x:
+                    return x.Message;
                 case ExpectedElementException x:
                     return x.Message;
                 case InvalidCharLit x:
@@ -30,7 +32,7 @@ namespace Kahwa.Parsing.Display
                     break;
             }
 
-            throw new ArgumentException("content");
+            throw new ArgumentException();
         }
     }
 }

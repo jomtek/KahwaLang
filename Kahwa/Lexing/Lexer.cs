@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Kahwa.Lexing
 {
@@ -24,7 +21,7 @@ namespace Kahwa.Lexing
             {
                 if (GetEscapeSequence(code[0]) == @"\u000D") // CR escape sequence, right before the LF (newline)
                 {
-                    code = code.Substring(1);
+                    code = code[1..];
                     continue;
                 }
 
@@ -42,7 +39,7 @@ namespace Kahwa.Lexing
                         if (tokenType != TokenType.SPACE && tokenType != TokenType.TAB)
                         {
                             if (tokenType == TokenType.STRING_LIT || tokenType == TokenType.CHAR_LIT)
-                                matchValue = matchValue.Substring(1).Remove(matchLength - 2);
+                                matchValue = matchValue[1..].Remove(matchLength - 2);
 
                             if (tokenType != TokenType.SINGLE_LINE_COMMENT && tokenType != TokenType.MULTI_LINE_COMMENT)
                                 result.Add(new Token(matchValue.Trim(), tokenType, new CodePosition(lineTrack, colTrack)));
@@ -58,7 +55,7 @@ namespace Kahwa.Lexing
                             colTrack += match.Length;
                         }
 
-                        code = code.Substring(match.Length);
+                        code = code[match.Length..];
                         break;
                     }
                 }

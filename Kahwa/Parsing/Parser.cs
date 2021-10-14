@@ -116,13 +116,13 @@ namespace Kahwa.Parsing
             throw lastError;
         }
 
-        public void SkipThroughEOLs()
+        public void SkipThroughNewlines()
         {
             while (true)
             {
                 try
                 {
-                    TryEat(TokenType.EOL);
+                    TryManyEats(new TokenType[] { TokenType.EOL, TokenType.SEMICOLON });
                 }
                 catch (ParserException)
                 {
