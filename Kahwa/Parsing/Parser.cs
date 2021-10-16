@@ -23,9 +23,14 @@ namespace Kahwa.Parsing
             Cursor = new CodePosition(0, 0);
         }
 
+        public bool CanLookAhead()
+        {
+            return _lookAheadIndex < _tokens.Length;
+        }
+
         public Token LookAhead()
         {
-            if (_lookAheadIndex >= _tokens.Length)
+            if (!CanLookAhead())
                 throw new ParserException(new EOF(), Cursor);
             return _tokens[_lookAheadIndex];
         }

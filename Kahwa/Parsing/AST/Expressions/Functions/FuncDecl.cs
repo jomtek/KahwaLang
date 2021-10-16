@@ -43,8 +43,6 @@ namespace Kahwa.Parsing.AST.Expressions.Functions
                 );
             }
 
-            Console.WriteLine($"lookahead: {parser.LookAhead().Value}");
-
             parser.TryEat(TokenType.L_PAREN, false);
 
             parameters = Utils.ParseSequence(parser, Name.Consume);

@@ -10,25 +10,35 @@ namespace Kahwa.Parsing.AST.Statements
 {
     public class Mutation : IInstr
     {
-        public readonly Token BaseVariable;
+        public readonly Name Name;
         public readonly TokenType MutationOp;
         public readonly ExprNode NewValue;
 
-        public Mutation(TokenType mutationOp, Token baseVariable, ExprNode newValue)
+        public Mutation(TokenType mutationOp, Name name, ExprNode newValue)
         {
-            BaseVariable = baseVariable;
+            Name = name;
             MutationOp = mutationOp;
             NewValue = newValue;
         }
 
         public static Mutation Consume(Parser parser)
         {
-            Token baseVariable = null;
+            Name name = null;
             TokenType mutationOp;
             ExprNode newValue = null;
 
-            baseVariable = parser.TryEat(TokenType.IDENTIFIER);
+            var oldCursor = parser.Cursor;
+
+            name = parser.TryConsumer(Name.Consume);
             mutationOp = parser.TryManyEats(TokenInformation.MutationOperators).Type;
+
+            if (mutationOp != TokenType.ASSIGN)
+            {
+                throw new ParserException(
+                    new UnexpectedElementException("Unexpected explicit type restriction"),
+                    oldCursor
+                );
+            }
 
             try
             {
@@ -43,7 +53,7 @@ namespace Kahwa.Parsing.AST.Statements
                 );
             }
 
-            return new Mutation(mutationOp, baseVariable, newValue);
+            return new Mutation(mutationOp, name, newValue);
         }
     }
 }

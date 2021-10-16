@@ -2,6 +2,7 @@
 using Kahwa.Parsing.Algorithms;
 using Kahwa.Parsing.AST.Expressions;
 using Kahwa.Parsing.AST.Expressions.Functions;
+using Kahwa.Parsing.AST.Expressions.Lists;
 using Kahwa.Parsing.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -114,7 +115,7 @@ namespace Kahwa.Parsing.AST
                     break;
 
                 case TokenType.L_BRACKET:
-                    operand = parser.TryConsumer(NativeArray.Consume);
+                    operand = parser.TryConsumer(NativeList.Consume);
                     break;
                 
                 case TokenType.NOT:

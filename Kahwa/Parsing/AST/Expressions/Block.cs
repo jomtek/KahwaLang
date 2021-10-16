@@ -17,28 +17,28 @@ namespace Kahwa.Parsing.AST.Expressions
             Instructions = instructions;
         }
 
-        public static Block Consume(Parser parser, bool curlyBrackets = true)
+        public static Block Consume(Parser parser, bool topLevel = false)
         {
             parser.SkipThroughNewlines();
 
-            if (curlyBrackets)
+            if (!topLevel)
                 parser.TryEat(TokenType.L_CURLY_BRACKET);
 
             InstrNode[] statements =
-                parser.TryConsumer((Parser p) => ParseStatementSeq(parser));
+                parser.TryConsumer((Parser p) => ParseStatementSeq(parser, topLevel));
 
-            if (curlyBrackets)
+            if (!topLevel)
                 parser.TryEat(TokenType.R_CURLY_BRACKET, false);
 
             return new Block(statements);
         }
 
-        private static InstrNode[] ParseStatementSeq(Parser parser)
+        private static InstrNode[] ParseStatementSeq(Parser parser, bool topLevel)
         {
             var statements = new List<InstrNode>();
             bool isLastEOL = true;
 
-            while (true)
+            while (parser.CanLookAhead())
             {
                 InstrNode statement = null;
                 bool eolFailed = false;
@@ -47,7 +47,7 @@ namespace Kahwa.Parsing.AST.Expressions
                 {
                     parser.TryManyEats(new TokenType[] { TokenType.EOL, TokenType.SEMICOLON });
                 }
-                catch (ParserException)
+                catch (ParserException ex)
                 {
                     eolFailed = true;
                 }
@@ -82,7 +82,7 @@ namespace Kahwa.Parsing.AST.Expressions
                     catch (ParserException ex)
                     {
                         if (!ex.IsExceptionFictive()) throw;
-                        if (parser.LookAhead().Type != TokenType.R_CURLY_BRACKET)
+                        if (!topLevel && parser.LookAhead().Type != TokenType.R_CURLY_BRACKET)
                         {
                             throw new ParserException(
                                 new UnexpectedTokenException(parser.LookAhead().Type),
